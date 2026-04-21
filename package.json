@@ -1,0 +1,19 @@
+{
+  "name": "merit",
+  "version": "1.0.0",
+  "description": "Reward open source contributors with instant Bitcoin Lightning payments when their PRs are merged",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist --license licenses.txt",
+    "build:watch": "ncc build src/index.js -o dist --watch"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^6.0.1",
+    "@getalby/sdk": "^3.0.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.4"
+  }
+}

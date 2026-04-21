@@ -1,0 +1,28 @@
+name: Merit
+description: Reward open source contributors with instant Bitcoin Lightning payments when their PRs are merged
+author: ericscalibur
+inputs:
+  nwc-connection-string:
+    description: NWC connection string (nostr+walletconnect://...) — store as a GitHub Secret
+    required: true
+  github-token:
+    description: GitHub token for API calls
+    required: false
+    default: ${{ github.token }}
+  treasury-lightning-address:
+    description: Maintainer Lightning address surfaced in confirmation comments for sponsors
+    required: false
+  trigger-keywords:
+    description: Comma-separated keywords that trigger a discretionary zap
+    required: false
+    default: '⚡,zap,merit,tip'
+  authorized-roles:
+    description: Comma-separated GitHub author_association values allowed to trigger zaps
+    required: false
+    default: 'OWNER,MEMBER,COLLABORATOR'
+runs:
+  using: node20
+  main: dist/index.js
+branding:
+  icon: zap
+  color: yellow
