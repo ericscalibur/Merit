@@ -134,6 +134,23 @@ Transparency comes from GitHub PR comments: every payment is publicly recorded, 
 
 ---
 
+## Wallet recommendations
+
+Merit pays via NWC, so your wallet needs to be well-connected to route payments to contributors worldwide. A brand new node with one channel will fail on many routes.
+
+**Works well:**
+- [Alby Cloud](https://getalby.com) — easiest, well-connected, instant setup
+- [Alby Hub](https://albyhub.com) on your own server connected to an established node with multiple channels
+- Any Lightning wallet with NWC support and good outbound liquidity
+
+**Will cause routing failures:**
+- A brand new embedded node with a single channel
+- A node with low outbound liquidity
+
+If a payment fails, Merit posts a comment on the PR with the contributor's Lightning address so you can pay manually.
+
+---
+
 ## Philosophy
 
 Merit is earned, not purchased.

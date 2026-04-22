@@ -21,7 +21,7 @@ inputs:
     required: false
     default: 'OWNER,MEMBER,COLLABORATOR'
 runs:
-  using: node20
+  using: node24
   main: dist/index.js
 branding:
   icon: zap
