@@ -78,7 +78,9 @@ async function run() {
     return;
   }
 
-  const treasuryLine = treasuryAddress ? ` — treasury: ${treasuryAddress}` : '';
+  const fundingLine = treasuryAddress
+    ? `\n\n*Want to fund more contributions to this project? ⚡ \`${treasuryAddress}\`*`
+    : '';
   let failed = false;
 
   // Pay discretionary zap
@@ -86,7 +88,7 @@ async function run() {
     try {
       await sendPayment(nwcConnectionString, lightningAddress, zapTrigger.amount);
       await postComment(owner, repo, prNumber,
-        `⚡ Zapped **${zapTrigger.amount.toLocaleString()} sats** to @${contributorLogin}${treasuryLine}`
+        `⚡ Zapped **${zapTrigger.amount.toLocaleString()} sats** to @${contributorLogin}${fundingLine}`
       );
       core.info(`Zap paid: ${zapTrigger.amount} sats to ${lightningAddress}`);
     } catch (err) {
@@ -105,7 +107,7 @@ async function run() {
     try {
       await sendPayment(nwcConnectionString, lightningAddress, bounty.amount);
       await postComment(owner, repo, prNumber,
-        `⚡ Paid **${bounty.amount.toLocaleString()} sats** bounty to @${contributorLogin} for closing #${bounty.issueNumber}${treasuryLine}`
+        `⚡ Paid **${bounty.amount.toLocaleString()} sats** bounty to @${contributorLogin} for closing #${bounty.issueNumber}${fundingLine}`
       );
       await removeLabelFromIssue(owner, repo, bounty.issueNumber, bounty.label);
       core.info(`Bounty paid: ${bounty.amount} sats for issue #${bounty.issueNumber}`);
