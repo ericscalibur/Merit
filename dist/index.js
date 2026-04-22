@@ -44561,18 +44561,18 @@ module.exports = { parseZapTrigger, parseClosingIssues, parseLightningAddress };
 
 /***/ }),
 
-/***/ 8422:
-/***/ ((module) => {
-
-module.exports = eval("require")("debug");
-
-
-/***/ }),
-
 /***/ 8327:
 /***/ ((module) => {
 
 module.exports = eval("require")("bufferutil");
+
+
+/***/ }),
+
+/***/ 8422:
+/***/ ((module) => {
+
+module.exports = eval("require")("debug");
 
 
 /***/ }),
