@@ -1,5 +1,9 @@
 const axios = require('axios');
 
+if (typeof WebSocket === 'undefined') {
+  global.WebSocket = require('ws');
+}
+
 async function withRetry(fn, retries = 3) {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {

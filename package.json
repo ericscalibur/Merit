@@ -11,7 +11,8 @@
     "@actions/core": "^1.10.0",
     "@actions/github": "^6.0.1",
     "@getalby/sdk": "^3.0.0",
-    "axios": "^1.6.0"
+    "axios": "^1.6.0",
+    "ws": "^8.20.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.38.4"
