@@ -6,6 +6,21 @@ Merit is a GitHub Action that sends Lightning payments to contributors automatic
 
 ---
 
+## Find repos using Merit
+
+Looking for open source projects that pay contributors in Bitcoin? Search GitHub:
+
+**[→ Browse repos using Merit](https://github.com/search?q=path%3A.github%2Fworkflows+ericscalibur%2Fmerit&type=code)**
+
+Or search manually:
+```
+path:.github/workflows ericscalibur/merit
+```
+
+Add a Lightning address to your GitHub bio (`⚡ you@getalby.com`) and start contributing. The merge is the payment.
+
+---
+
 ## How it works
 
 **Discretionary zap** — a maintainer sees unexpected value in a contribution and chooses to reward it:
