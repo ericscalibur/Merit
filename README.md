@@ -48,7 +48,7 @@ Both flows leave a permanent public record on the PR. That's your audit trail.
 
 **2. Add the workflow file**
 
-Create `.github/workflows/merit.yml` in your repo:
+Create `.github/workflows/merit.yml` in your repo and paste the full snippet below. The GitHub Marketplace shows only the bare step reference — you need the complete file for Merit to actually run.
 
 ```yaml
 name: Merit
@@ -62,14 +62,16 @@ permissions:
 
 jobs:
   merit:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true  # required — without this, Merit fires on closed-but-not-merged PRs
     runs-on: ubuntu-latest
     steps:
-      - uses: ericscalibur/merit@v1
+      - uses: ericscalibur/Merit@v1
         with:
           nwc-connection-string: ${{ secrets.NWC_CONNECTION_STRING }}
           treasury-lightning-address: "tips@yourdomain.com"  # optional
 ```
+
+> **Note:** The `if: github.event.pull_request.merged == true` line is required. Without it the action runs on every closed PR — including ones that were rejected — and will attempt to send payments when none are owed.
 
 **3. Add your NWC connection string as a secret**
 
