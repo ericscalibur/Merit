@@ -3,6 +3,7 @@ function parseZapTrigger(comments, authorizedRoles, triggerKeywords) {
   const roles = authorizedRoles.split(',').map(r => r.trim().toUpperCase());
 
   for (const comment of comments) {
+    if (!comment.body) continue;
     if (!roles.includes((comment.author_association || '').toUpperCase())) continue;
 
     for (const keyword of keywords) {

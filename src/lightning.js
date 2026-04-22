@@ -53,7 +53,10 @@ async function payInvoice(nwcConnectionString, invoice) {
   const { nwc } = require('@getalby/sdk');
   const client = new nwc.NWCClient({ nostrWalletConnectUrl: nwcConnectionString });
   try {
-    const result = await client.payInvoice({ invoice });
+    const timeout = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('NWC payment timed out after 30 seconds')), 30000)
+    );
+    const result = await Promise.race([client.payInvoice({ invoice }), timeout]);
     return result;
   } finally {
     client.close();
