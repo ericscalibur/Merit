@@ -74,6 +74,20 @@ async function sendPayment(nwcConnectionString, lightningAddress, amountSats) {
   }
 
   const invoice = await fetchInvoice(lnurl.callback, amountSats);
+
+  const bolt11 = require('bolt11');
+  let decoded;
+  try {
+    decoded = bolt11.decode(invoice);
+  } catch (err) {
+    throw new Error(`Failed to decode invoice: ${err.message}`);
+  }
+
+  const expectedMillisatoshis = String(amountSats * 1000);
+  if (String(decoded.millisatoshis) !== expectedMillisatoshis) {
+    throw new Error(`Invoice amount mismatch! Expected ${expectedMillisatoshis} msats but got ${decoded.millisatoshis} msats. Payment aborted to prevent treasury drain.`);
+  }
+
   await payInvoice(nwcConnectionString, invoice);
 }
 
