@@ -12,6 +12,7 @@
     "@actions/github": "^6.0.1",
     "@getalby/sdk": "^3.0.0",
     "axios": "^1.6.0",
+    "bolt11": "^1.4.1",
     "ws": "^8.20.0"
   },
   "devDependencies": {
